@@ -145,18 +145,17 @@ if __name__ == "__main__":
             total_grad_norm_constraint=100,
         )
 
-        trace = hist.sample(500)
+        # trace = hist.sample(500)
         # ppc = pm.sample_ppc(trace)
 
     import gzip
-    import pickle
+    import cloudpickle
 
     with gzip.open("data/hackett_advi.pgz", "wb") as f:
-        pickle.dump(
+        cloudpickle.dump(
             {
                 "approx": approx,
                 "hist": hist,
-                "trace": trace,
             },
             f,
         )
